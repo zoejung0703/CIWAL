@@ -1,43 +1,40 @@
 import json
 from simulation import load_policy_data, check_warnings
 from models import Metrics
-from analysis import explain_final_metrics, interpret_metrics, bar_line, LABELS
+from analysis import explain_final_metrics, interpret_metrics, bar_line
 
-# ===== UI/입출력 관련 함수 =====
 def display_turn_start(turn, metrics):
-    print(f"\n=== 턴 {turn.turn_id} - {turn.era} ===")
-    print("현재 지표 상태:")
+    print(f"\n=== Turn {turn.turn_id} - {turn.era} ===")
+    print("Current metrics:")
     interp = interpret_metrics(metrics.to_dict())
     for key in ["gdp", "happiness", "freedom", "inequality", "sustainability"]:
         val = getattr(metrics, key)
-        label = LABELS[key]
-        print(bar_line(label, val, interp[label]))
+        print(bar_line(key.capitalize(), val, interp[key]))
 
     warnings = check_warnings(metrics)
     for w in warnings:
         print(w)
 
 def display_policies(turn):
-    print("\n정책 선택지:")
+    print("\nPolicy choices:")
     for i, p in enumerate(turn.policies, 1):
-        effs = ", ".join([f"{LABELS[k]}: {v:+d}" for k, v in p.effects.items()])
-        print(f"{i}. {p.name} - {p.philosopher}: \"{p.quote}\" ({effs})")
+        effs = ", ".join([f"{k.capitalize()}: {v:+d}" for k, v in p.effects.items()])
+        print(f"{i}. {p.name} ({effs}) - {p.philosopher}: \"{p.quote}\"")
 
 def get_player_choice(turn):
     while True:
         try:
-            choice = int(input("\n👉 선택할 정책 번호를 입력하세요: "))
+            choice = int(input("\n👉 Enter policy number: "))
             if 1 <= choice <= len(turn.policies):
                 return turn.policies[choice - 1]
             else:
-                print(f"1 ~ {len(turn.policies)} 사이 숫자 입력")
+                print(f"Enter a number between 1 and {len(turn.policies)}")
         except ValueError:
-            print("숫자를 입력하세요.")
+            print("Please enter a number.")
 
 def display_final_result(final_metrics):
     explain_final_metrics(final_metrics)
 
-# ===== 메인 게임 루프 =====
 def main():
     turns = load_policy_data()
 
@@ -63,7 +60,7 @@ def main():
             "effects": policy.effects
         })
 
-        print(f"\n✅ {policy.name} 선택됨!")
+        print(f"\n✅ {policy.name} chosen!")
 
     final = history[-1]["metrics"]
     display_final_result(final)

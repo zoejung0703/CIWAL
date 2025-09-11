@@ -253,39 +253,4 @@
         ]
       },
       {
-        "turn_id": 11,
-        "era": "환경 위기",
-        "scene": "오염도시1, 태양광1, 시위대광장1",
-        "policies": [
-          {
-            "id": "carbon_zero",
-            "name": "탄소제로",
-            "effects": { "gdp": -6, "happiness": 3, "freedom": -2, "inequality": -3, "sustainability": 15 },
-            "philosopher": "브룬틀란",
-            "quote": "미래 세대를 위해 지금 바꿔야 한다"
-          },
-          {
-            "id": "tech_innov",
-            "name": "기술혁신",
-            "effects": { "gdp": 12, "happiness": 4, "freedom": 6, "inequality": 5, "sustainability": 10 },
-            "philosopher": "과학자",
-            "quote": "혁신이 문제를 해결한다"
-          },
-          {
-            "id": "status_quo",
-            "name": "현상 유지",
-            "effects": { "gdp": 6, "happiness": -3, "freedom": 2, "inequality": 4, "sustainability": -8 },
-            "philosopher": "기업가",
-            "quote": "현상 유지가 안정이다"
-          }
-        ]
-      },
-      {
-        "turn_id": 12,
-        "era": "미래 전환",
-        "scene": "섬 줌아웃, 지구섬 다수",
-        "policies": []
-      }
-    ]
-  }
-  
+        "turn_i

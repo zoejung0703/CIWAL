@@ -1,20 +1,20 @@
 """
 export.py
-Unity와 연동하기 위한 JSON 출력
+Exports the simulation state to JSON for Unity or external visualization.
 """
 
 import json
-from simulation import load_policy_data, run_simulation
+import os
+from datetime import datetime
 
-def export_state(choices, out_path="export/state.json"):
-    turns = load_policy_data()
-    history = run_simulation(turns, choices)
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2, ensure_ascii=False)
-
-
-if __name__ == "__main__":
-    # 예시: 1턴 communal, 2턴 trade 선택
-    choices = {1: "communal", 2: "trade"}
-    export_state(choices)
-    print("state.json exported.")
+def export_state(metrics, history, path="export/"):
+    os.makedirs(path, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"state_{timestamp}.json"
+    export_data = {
+        "final_metrics": metrics.to_dict(),
+        "history": history
+    }
+    with open(os.path.join(path, filename), "w", encoding="utf-8") as f:
+        json.dump(export_data, f, ensure_ascii=False, indent=2)
+    print(f"State exported to {os.path.join(path, filename)}")
