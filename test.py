@@ -1,51 +1,72 @@
-"""
-test.py
-터미널에서 턴별 정책 선택 → 결과 출력 → state.json 저장
-"""
-
 import json
-from simulation import load_policy_data, run_simulation
-from export import export_state
+from simulation import load_policy_data, check_warnings
+from models import Metrics
+from analysis import explain_final_metrics, interpret_metrics, bar_line, LABELS
 
+# ===== UI/입출력 관련 함수 =====
+def display_turn_start(turn, metrics):
+    print(f"\n=== 턴 {turn.turn_id} - {turn.era} ===")
+    print("현재 지표 상태:")
+    interp = interpret_metrics(metrics.to_dict())
+    for key in ["gdp", "happiness", "freedom", "inequality", "sustainability"]:
+        val = getattr(metrics, key)
+        label = LABELS[key]
+        print(bar_line(label, val, interp[label]))
+
+    warnings = check_warnings(metrics)
+    for w in warnings:
+        print(w)
+
+def display_policies(turn):
+    print("\n정책 선택지:")
+    for i, p in enumerate(turn.policies, 1):
+        effs = ", ".join([f"{LABELS[k]}: {v:+d}" for k, v in p.effects.items()])
+        print(f"{i}. {p.name} - {p.philosopher}: \"{p.quote}\" ({effs})")
+
+def get_player_choice(turn):
+    while True:
+        try:
+            choice = int(input("\n👉 선택할 정책 번호를 입력하세요: "))
+            if 1 <= choice <= len(turn.policies):
+                return turn.policies[choice - 1]
+            else:
+                print(f"1 ~ {len(turn.policies)} 사이 숫자 입력")
+        except ValueError:
+            print("숫자를 입력하세요.")
+
+def display_final_result(final_metrics):
+    explain_final_metrics(final_metrics)
+
+# ===== 메인 게임 루프 =====
 def main():
     turns = load_policy_data()
-    choices = {}
 
-    print("=== 가치 선택 시뮬레이션 ===")
+    metrics = Metrics(gdp=30, happiness=50, freedom=45,
+                      inequality=25, sustainability=70, population=50)
+
+    history = []
     for turn in turns:
-        print(f"\n턴 {turn.turn_id}: {turn.era}")
-        print(f"씬 구성: {turn.scene}")
-        for i, p in enumerate(turn.policies):
-            print(f"  [{i+1}] {p.name} ({p.philosopher}: \"{p.quote}\")")
-
         if not turn.policies:
-            continue
+            break
 
-        while True:
-            try:
-                choice = int(input("정책 선택: ")) - 1
-                if 0 <= choice < len(turn.policies):
-                    chosen = turn.policies[choice]
-                    print(f"선택됨: {chosen.name}")
-                    choices[turn.turn_id] = chosen.id
-                    break
-            except Exception:
-                pass
-            print("잘못된 입력입니다. 다시 입력하세요.")
+        display_turn_start(turn, metrics)
+        display_policies(turn)
+        policy = get_player_choice(turn)
 
-    # 시뮬레이션 실행
-    history = run_simulation(turns, choices)
+        metrics.update(policy.effects)
+        metrics.population = int(metrics.population * 1.2)
 
-    # 결과 출력
-    print("\n=== 최종 결과 ===")
-    for h in history:
-        print(f"턴 {h['turn']} ({h['era']}) - 선택: {h['choice']}")
-        print(f"  지표: {h['metrics']}")
+        history.append({
+            "turn": turn.turn_id,
+            "choice": policy.name,
+            "metrics": metrics.to_dict(),
+            "effects": policy.effects
+        })
 
-    # state.json 저장
-    with open("export/state.json", "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2, ensure_ascii=False)
-    print("\n결과가 export/state.json에 저장되었습니다.")
+        print(f"\n✅ {policy.name} 선택됨!")
+
+    final = history[-1]["metrics"]
+    display_final_result(final)
 
 if __name__ == "__main__":
     main()

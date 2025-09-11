@@ -1,0 +1,194 @@
+[
+  {
+    "turn": 1,
+    "era": "부족 공동체",
+    "choice": "공동 분배",
+    "metrics": {
+      "gdp": 8,
+      "happiness": 50,
+      "freedom": 49,
+      "inequality": 15,
+      "sustainability": 91,
+      "population": 36
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 2,
+    "era": "고대 도시국가",
+    "choice": "공동 분배제",
+    "metrics": {
+      "gdp": 6,
+      "happiness": 55,
+      "freedom": 48,
+      "inequality": 10,
+      "sustainability": 92,
+      "population": 43
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 3,
+    "era": "로마 제국",
+    "choice": "법치적 조세",
+    "metrics": {
+      "gdp": 11,
+      "happiness": 56,
+      "freedom": 50,
+      "inequality": 5,
+      "sustainability": 93,
+      "population": 51
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 4,
+    "era": "중세 기독교 사회",
+    "choice": "영주 조세 강화",
+    "metrics": {
+      "gdp": 16,
+      "happiness": 53,
+      "freedom": 49,
+      "inequality": 10,
+      "sustainability": 92,
+      "population": 61
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 5,
+    "era": "상업 도시",
+    "choice": "영주세율 유지",
+    "metrics": {
+      "gdp": 21,
+      "happiness": 51,
+      "freedom": 48,
+      "inequality": 15,
+      "sustainability": 91,
+      "population": 73
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 6,
+    "era": "근대 초기 (중상주의)",
+    "choice": "금은 축적",
+    "metrics": {
+      "gdp": 28,
+      "happiness": 50,
+      "freedom": 43,
+      "inequality": 17,
+      "sustainability": 89,
+      "population": 87
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 7,
+    "era": "산업혁명",
+    "choice": "노동시간 제한",
+    "metrics": {
+      "gdp": 23,
+      "happiness": 55,
+      "freedom": 42,
+      "inequality": 12,
+      "sustainability": 90,
+      "population": 104
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 8,
+    "era": "대공황",
+    "choice": "사회주의 분배",
+    "metrics": {
+      "gdp": 18,
+      "happiness": 62,
+      "freedom": 40,
+      "inequality": 5,
+      "sustainability": 91,
+      "population": 124
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 9,
+    "era": "복지국가 형성",
+    "choice": "보편 복지",
+    "metrics": {
+      "gdp": 15,
+      "happiness": 69,
+      "freedom": 38,
+      "inequality": 0,
+      "sustainability": 92,
+      "population": 148
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 10,
+    "era": "세계화",
+    "choice": "보호무역",
+    "metrics": {
+      "gdp": 12,
+      "happiness": 68,
+      "freedom": 36,
+      "inequality": 0,
+      "sustainability": 99,
+      "population": 177
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 11,
+    "era": "환경 위기",
+    "choice": "기술혁신",
+    "metrics": {
+      "gdp": 19,
+      "happiness": 69,
+      "freedom": 39,
+      "inequality": 1,
+      "sustainability": 104,
+      "population": 212
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  },
+  {
+    "turn": 12,
+    "era": "미래 전환",
+    "choice": null,
+    "metrics": {
+      "gdp": 19,
+      "happiness": 69,
+      "freedom": 39,
+      "inequality": 1,
+      "sustainability": 104,
+      "population": 254
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ]
+  }
+]

@@ -1,0 +1,258 @@
+[
+  {
+    "turn": 1,
+    "era": "부족 공동체",
+    "choice": "공동 분배",
+    "metrics": {
+      "gdp": 27,
+      "happiness": 56,
+      "freedom": 41,
+      "inequality": 17,
+      "sustainability": 73,
+      "population": 60
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ],
+    "effects": {
+      "gdp": -3,
+      "happiness": 6,
+      "freedom": -4,
+      "inequality": -8,
+      "sustainability": 3
+    }
+  },
+  {
+    "turn": 2,
+    "era": "고대 도시국가",
+    "choice": "공동 분배제",
+    "metrics": {
+      "gdp": 23,
+      "happiness": 61,
+      "freedom": 38,
+      "inequality": 10,
+      "sustainability": 75,
+      "population": 72
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ],
+    "effects": {
+      "gdp": -4,
+      "happiness": 5,
+      "freedom": -3,
+      "inequality": -7,
+      "sustainability": 2
+    }
+  },
+  {
+    "turn": 3,
+    "era": "로마 제국",
+    "choice": "법치적 조세",
+    "metrics": {
+      "gdp": 28,
+      "happiness": 64,
+      "freedom": 40,
+      "inequality": 5,
+      "sustainability": 76,
+      "population": 86
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ],
+    "effects": {
+      "gdp": 5,
+      "happiness": 3,
+      "freedom": 2,
+      "inequality": -5,
+      "sustainability": 1
+    }
+  },
+  {
+    "turn": 4,
+    "era": "중세 기독교 사회",
+    "choice": "영주 조세 강화",
+    "metrics": {
+      "gdp": 36,
+      "happiness": 61,
+      "freedom": 36,
+      "inequality": 12,
+      "sustainability": 74,
+      "population": 103
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ],
+    "effects": {
+      "gdp": 8,
+      "happiness": -3,
+      "freedom": -4,
+      "inequality": 7,
+      "sustainability": -2
+    }
+  },
+  {
+    "turn": 5,
+    "era": "상업 도시",
+    "choice": "영주세율 유지",
+    "metrics": {
+      "gdp": 42,
+      "happiness": 60,
+      "freedom": 34,
+      "inequality": 17,
+      "sustainability": 73,
+      "population": 123
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": 6,
+      "happiness": -1,
+      "freedom": -2,
+      "inequality": 5,
+      "sustainability": -1
+    }
+  },
+  {
+    "turn": 6,
+    "era": "근대 초기 (중상주의)",
+    "choice": "내수 보호",
+    "metrics": {
+      "gdp": 38,
+      "happiness": 63,
+      "freedom": 31,
+      "inequality": 11,
+      "sustainability": 79,
+      "population": 147
+    },
+    "warnings": [
+      "⚠️ 경제가 약화되고 있습니다."
+    ],
+    "effects": {
+      "gdp": -4,
+      "happiness": 3,
+      "freedom": -3,
+      "inequality": -6,
+      "sustainability": 6
+    }
+  },
+  {
+    "turn": 7,
+    "era": "산업혁명",
+    "choice": "교육 투자",
+    "metrics": {
+      "gdp": 42,
+      "happiness": 68,
+      "freedom": 33,
+      "inequality": 6,
+      "sustainability": 81,
+      "population": 176
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": 4,
+      "happiness": 5,
+      "freedom": 2,
+      "inequality": -5,
+      "sustainability": 2
+    }
+  },
+  {
+    "turn": 8,
+    "era": "대공황",
+    "choice": "정부 개입",
+    "metrics": {
+      "gdp": 52,
+      "happiness": 75,
+      "freedom": 29,
+      "inequality": 0,
+      "sustainability": 84,
+      "population": 211
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": 10,
+      "happiness": 7,
+      "freedom": -4,
+      "inequality": -6,
+      "sustainability": 3
+    }
+  },
+  {
+    "turn": 9,
+    "era": "복지국가 형성",
+    "choice": "최소국가",
+    "metrics": {
+      "gdp": 64,
+      "happiness": 71,
+      "freedom": 38,
+      "inequality": 12,
+      "sustainability": 79,
+      "population": 253
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": 12,
+      "happiness": -4,
+      "freedom": 9,
+      "inequality": 12,
+      "sustainability": -5
+    }
+  },
+  {
+    "turn": 10,
+    "era": "세계화",
+    "choice": "보호무역",
+    "metrics": {
+      "gdp": 60,
+      "happiness": 69,
+      "freedom": 35,
+      "inequality": 8,
+      "sustainability": 86,
+      "population": 303
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": -4,
+      "happiness": -2,
+      "freedom": -3,
+      "inequality": -4,
+      "sustainability": 7
+    }
+  },
+  {
+    "turn": 11,
+    "era": "환경 위기",
+    "choice": "기술혁신",
+    "metrics": {
+      "gdp": 72,
+      "happiness": 73,
+      "freedom": 41,
+      "inequality": 13,
+      "sustainability": 96,
+      "population": 363
+    },
+    "warnings": [],
+    "effects": {
+      "gdp": 12,
+      "happiness": 4,
+      "freedom": 6,
+      "inequality": 5,
+      "sustainability": 10
+    }
+  },
+  {
+    "turn": 12,
+    "era": "미래 전환",
+    "choice": null,
+    "metrics": {
+      "gdp": 72,
+      "happiness": 73,
+      "freedom": 41,
+      "inequality": 13,
+      "sustainability": 96,
+      "population": 435
+    },
+    "warnings": [],
+    "effects": {}
+  }
+]

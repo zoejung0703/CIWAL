@@ -1,0 +1,158 @@
+[
+  {
+    "turn": 1,
+    "era": "부족 공동체",
+    "choice": "사유 보호",
+    "metrics": {
+      "gdp": 15,
+      "happiness": 42,
+      "freedom": 55,
+      "inequality": 25,
+      "sustainability": 90,
+      "population": 36
+    }
+  },
+  {
+    "turn": 2,
+    "era": "고대 도시국가",
+    "choice": "자유 무역 허용",
+    "metrics": {
+      "gdp": 20,
+      "happiness": 42,
+      "freedom": 60,
+      "inequality": 30,
+      "sustainability": 90,
+      "population": 43
+    }
+  },
+  {
+    "turn": 3,
+    "era": "로마 제국",
+    "choice": "황제 권력 집중",
+    "metrics": {
+      "gdp": 27,
+      "happiness": 42,
+      "freedom": 55,
+      "inequality": 30,
+      "sustainability": 90,
+      "population": 51
+    }
+  },
+  {
+    "turn": 4,
+    "era": "중세 기독교 사회",
+    "choice": "영주 조세 강화",
+    "metrics": {
+      "gdp": 32,
+      "happiness": 39,
+      "freedom": 55,
+      "inequality": 35,
+      "sustainability": 90,
+      "population": 61
+    }
+  },
+  {
+    "turn": 5,
+    "era": "상업 도시",
+    "choice": "자유 교역",
+    "metrics": {
+      "gdp": 37,
+      "happiness": 39,
+      "freedom": 60,
+      "inequality": 40,
+      "sustainability": 90,
+      "population": 73
+    }
+  },
+  {
+    "turn": 6,
+    "era": "근대 초기 (중상주의)",
+    "choice": "무역 자유화",
+    "metrics": {
+      "gdp": 42,
+      "happiness": 39,
+      "freedom": 65,
+      "inequality": 45,
+      "sustainability": 90,
+      "population": 87
+    }
+  },
+  {
+    "turn": 7,
+    "era": "산업혁명",
+    "choice": "자유시장 확대",
+    "metrics": {
+      "gdp": 52,
+      "happiness": 39,
+      "freedom": 70,
+      "inequality": 50,
+      "sustainability": 90,
+      "population": 104
+    }
+  },
+  {
+    "turn": 8,
+    "era": "대공황",
+    "choice": "시장 자율",
+    "metrics": {
+      "gdp": 49,
+      "happiness": 39,
+      "freedom": 77,
+      "inequality": 50,
+      "sustainability": 90,
+      "population": 124
+    }
+  },
+  {
+    "turn": 9,
+    "era": "복지국가 형성",
+    "choice": "최소국가",
+    "metrics": {
+      "gdp": 54,
+      "happiness": 39,
+      "freedom": 84,
+      "inequality": 55,
+      "sustainability": 90,
+      "population": 148
+    }
+  },
+  {
+    "turn": 10,
+    "era": "세계화",
+    "choice": "자유무역",
+    "metrics": {
+      "gdp": 61,
+      "happiness": 39,
+      "freedom": 91,
+      "inequality": 60,
+      "sustainability": 90,
+      "population": 177
+    }
+  },
+  {
+    "turn": 11,
+    "era": "환경 위기",
+    "choice": "기술혁신",
+    "metrics": {
+      "gdp": 68,
+      "happiness": 39,
+      "freedom": 94,
+      "inequality": 60,
+      "sustainability": 95,
+      "population": 212
+    }
+  },
+  {
+    "turn": 12,
+    "era": "미래 전환",
+    "choice": null,
+    "metrics": {
+      "gdp": 68,
+      "happiness": 39,
+      "freedom": 94,
+      "inequality": 60,
+      "sustainability": 95,
+      "population": 254
+    }
+  }
+]
