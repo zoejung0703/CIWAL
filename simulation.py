@@ -1,13 +1,13 @@
 """
 simulation.py
-턴 진행 및 정책 적용 + 단계적 경고 + 즉시 엔딩 판정
+Turn progression, policy application, stepwise warnings, and immediate ending checks
 """
 
 import json
 from models import Metrics, Policy, Turn
 
-
 def load_policy_data(path="data/policy_data.json"):
+    """Load policies from JSON into Turn and Policy objects"""
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
 
@@ -26,25 +26,77 @@ def load_policy_data(path="data/policy_data.json"):
         turns.append(Turn(t["turn_id"], t["era"], t["scene"], policies))
     return turns
 
-
 def check_warnings(metrics):
+    """Return warnings if metrics fall below critical thresholds"""
     warnings = []
     if metrics.happiness < 20:
-        warnings.append("⚠️ 행복이 낮습니다. 사회 불안이 커지고 있습니다.")
+        warnings.append("⚠️ Low happiness: risk of social unrest.")
     if metrics.gdp < 40:
-        warnings.append("⚠️ 경제가 약화되고 있습니다.")
+        warnings.append("⚠️ Weak economy: GDP falling.")
     if metrics.sustainability < 20:
-        warnings.append("⚠️ 환경 파괴가 심각합니다.")
+        warnings.append("⚠️ Environmental collapse is imminent.")
     if metrics.freedom < 20:
-        warnings.append("⚠️ 자유가 크게 위축되었습니다.")
+        warnings.append("⚠️ Freedom is severely restricted.")
     if metrics.inequality > 70:
-        warnings.append("⚠️ 불평등이 심각해 사회가 분열 조짐을 보입니다.")
+        warnings.append("⚠️ High inequality: risk of division.")
     return warnings
 
-
 def run_simulation(turns, choices):
+    """Run the simulation based on given turns and chosen policies"""
     metrics = Metrics(
-    gdp=30,             # 초기 GDP 지수
-    happiness=50,       # 초기 행복 지수
-    freedom=45,         # 초기 자유 지수
-    inequality=25,      # 초기 불평등 지�
+        gdp=30,            # initial GDP index
+        happiness=50,      # initial happiness
+        freedom=45,        # initial freedom
+        inequality=25,     # initial inequality
+        sustainability=70, # initial sustainability
+        population=50      # initial population
+    )
+    history = []
+
+    for turn in turns:
+        choice_id = choices.get(turn.turn_id)
+        policy = next((p for p in turn.policies if p.id == choice_id), None)
+
+        if policy:
+            metrics.update(policy.effects)
+
+        # population growth (simple model)
+        metrics.population = int(metrics.population * 1.2)
+
+        # warnings
+        warnings = check_warnings(metrics)
+
+        record = {
+            "turn": turn.turn_id,
+            "era": turn.era,
+            "choice": policy.name if policy else None,
+            "metrics": metrics.to_dict(),
+            "warnings": warnings,
+            "effects": policy.effects if policy else {}
+        }
+
+        # immediate ending conditions
+        if metrics.happiness <= 0:
+            record["ending"] = "💥 Collapse: Happiness reached 0"
+            history.append(record)
+            break
+        if metrics.gdp <= 0:
+            record["ending"] = "📉 Collapse: GDP reached 0"
+            history.append(record)
+            break
+        if metrics.sustainability <= 0:
+            record["ending"] = "🌍 Collapse: Sustainability reached 0"
+            history.append(record)
+            break
+        if metrics.freedom <= 0:
+            record["ending"] = "🔒 Collapse: Freedom reached 0"
+            history.append(record)
+            break
+        if metrics.inequality >= 100:
+            record["ending"] = "⚖️ Collapse: Inequality reached 100"
+            history.append(record)
+            break
+
+        history.append(record)
+
+    return history
