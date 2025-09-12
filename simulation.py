@@ -1,13 +1,13 @@
 """
 simulation.py
-Turn progression, policy application, stepwise warnings, and immediate ending checks
+Turn progression, policy application, warnings, and endings
 """
 
 import json
 from models import Metrics, Policy, Turn
 
+
 def load_policy_data(path="data/policy_data.json"):
-    """Load policies from JSON into Turn and Policy objects"""
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
 
@@ -26,30 +26,42 @@ def load_policy_data(path="data/policy_data.json"):
         turns.append(Turn(t["turn_id"], t["era"], t["scene"], policies))
     return turns
 
+
 def check_warnings(metrics):
-    """Return warnings if metrics fall below critical thresholds"""
     warnings = []
     if metrics.happiness < 20:
-        warnings.append("⚠️ Low happiness: risk of social unrest.")
+        warnings.append("⚠️ Happiness is critically low. Social unrest is rising.")
     if metrics.gdp < 40:
-        warnings.append("⚠️ Weak economy: GDP falling.")
+        warnings.append("⚠️ Economy is weakening. Production is faltering.")
     if metrics.sustainability < 20:
         warnings.append("⚠️ Environmental collapse is imminent.")
     if metrics.freedom < 20:
-        warnings.append("⚠️ Freedom is severely restricted.")
-    if metrics.inequality > 70:
-        warnings.append("⚠️ High inequality: risk of division.")
+        warnings.append("⚠️ Freedom is severely restricted. Authoritarianism grows.")
+    if metrics.equality < 30:
+        warnings.append("⚠️ Equality is dangerously low. Society is fragmenting.")
     return warnings
 
+
+def apply_population_growth(metrics):
+    """Population growth depends on GDP, happiness, sustainability."""
+    gdp_factor = (metrics.gdp - 50) / 500  
+    happiness_factor = (metrics.happiness - 50) / 2500  
+    sustainability_factor = (metrics.sustainability - 50) / 1000  
+
+    growth_factor = 1.0 + gdp_factor + happiness_factor + sustainability_factor
+    growth_factor = max(0.7, min(1.3, growth_factor))  
+
+    metrics.population = int(metrics.population * growth_factor)
+
+
 def run_simulation(turns, choices):
-    """Run the simulation based on given turns and chosen policies"""
     metrics = Metrics(
-        gdp=30,            # initial GDP index
-        happiness=50,      # initial happiness
-        freedom=45,        # initial freedom
-        inequality=25,     # initial inequality
-        sustainability=70, # initial sustainability
-        population=50      # initial population
+        gdp=30,
+        happiness=50,
+        freedom=45,
+        equality=75,
+        sustainability=70,
+        population=50
     )
     history = []
 
@@ -60,10 +72,7 @@ def run_simulation(turns, choices):
         if policy:
             metrics.update(policy.effects)
 
-        # population growth (simple model)
-        metrics.population = int(metrics.population * 1.2)
-
-        # warnings
+        apply_population_growth(metrics)
         warnings = check_warnings(metrics)
 
         record = {
@@ -75,28 +84,24 @@ def run_simulation(turns, choices):
             "effects": policy.effects if policy else {}
         }
 
-        # immediate ending conditions
+        # Ending conditions
         if metrics.happiness <= 0:
-            record["ending"] = "💥 Collapse: Happiness reached 0"
+            record["ending"] = "💥 Social collapse (Happiness 0)"
             history.append(record)
             break
         if metrics.gdp <= 0:
-            record["ending"] = "📉 Collapse: GDP reached 0"
+            record["ending"] = "📉 Economic collapse (GDP 0)"
             history.append(record)
             break
         if metrics.sustainability <= 0:
-            record["ending"] = "🌍 Collapse: Sustainability reached 0"
+            record["ending"] = "🌍 Environmental collapse (Sustainability 0)"
             history.append(record)
             break
         if metrics.freedom <= 0:
-            record["ending"] = "🔒 Collapse: Freedom reached 0"
+            record["ending"] = "🔒 Authoritarian regime (Freedom 0)"
             history.append(record)
             break
-        if metrics.inequality >= 100:
-            record["ending"] = "⚖️ Collapse: Inequality reached 100"
+        if metrics.equality <= 0:
+            record["ending"] = "⚖️ Extreme inequality → Social breakdown"
             history.append(record)
-            break
-
-        history.append(record)
-
-    return history
+ 

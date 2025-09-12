@@ -1,69 +1,55 @@
-import json
-from simulation import load_policy_data, check_warnings
-from models import Metrics
-from analysis import explain_final_metrics, interpret_metrics, bar_line
+import sys
+from simulation import load_policy_data, run_simulation
 
-def display_turn_start(turn, metrics):
-    print(f"\n=== Turn {turn.turn_id} - {turn.era} ===")
-    print("Current metrics:")
-    interp = interpret_metrics(metrics.to_dict())
-    for key in ["gdp", "happiness", "freedom", "inequality", "sustainability"]:
-        val = getattr(metrics, key)
-        print(bar_line(key.capitalize(), val, interp[key]))
 
-    warnings = check_warnings(metrics)
-    for w in warnings:
-        print(w)
-
-def display_policies(turn):
-    print("\nPolicy choices:")
-    for i, p in enumerate(turn.policies, 1):
-        effs = ", ".join([f"{k.capitalize()}: {v:+d}" for k, v in p.effects.items()])
-        print(f"{i}. {p.name} ({effs}) - {p.philosopher}: \"{p.quote}\"")
-
-def get_player_choice(turn):
-    while True:
-        try:
-            choice = int(input("\n👉 Enter policy number: "))
-            if 1 <= choice <= len(turn.policies):
-                return turn.policies[choice - 1]
-            else:
-                print(f"Enter a number between 1 and {len(turn.policies)}")
-        except ValueError:
-            print("Please enter a number.")
-
-def display_final_result(final_metrics):
-    explain_final_metrics(final_metrics)
+def display_metrics(metrics, previous=None):
+    print("\n--- Current Metrics ---")
+    for key, value in metrics.items():
+        print(f"{key.capitalize()}: {value}")
+    print("-----------------------")
 
 def main():
     turns = load_policy_data()
-
-    metrics = Metrics(gdp=30, happiness=50, freedom=45,
-                      inequality=25, sustainability=70, population=50)
-
+    choices = {}
     history = []
+    previous_metrics = None
+
     for turn in turns:
-        if not turn.policies:
+        print(f"\n=== Turn {turn.turn_id}: {turn.era} ===")
+        print(f"Scene: {turn.scene}")
+
+        if history:
+            current_metrics = history[-1]["metrics"]
+        else:
+            current_metrics = {
+                "gdp": 30,
+                "happiness": 50,
+                "freedom": 45,
+                "equality": 75,
+                "sustainability": 70,
+                "population": 50
+            }
+        display_metrics(current_metrics, previous_metrics)
+
+        print("Policy options:")
+        for i, policy in enumerate(turn.policies, 1):
+            print(f"{i}. {policy.name} ({policy.philosopher}: \"{policy.quote}\") "
+                  f"Effects: {policy.effects}")
+
+        choice = int(input(f"Select a policy (1-{len(turn.policies)}): "))
+        chosen_policy = turn.policies[choice - 1]
+        choices[turn.turn_id] = chosen_policy.id
+
+        history = run_simulation(turns[:turn.turn_id], choices)
+        previous_metrics = history[-1]["metrics"]
+
+        if "ending" in history[-1]:
+            print(f"\n*** GAME OVER: {history[-1]['ending']} ***")
             break
 
-        display_turn_start(turn, metrics)
-        display_policies(turn)
-        policy = get_player_choice(turn)
-
-        metrics.update(policy.effects)
-        metrics.population = int(metrics.population * 1.2)
-
-        history.append({
-            "turn": turn.turn_id,
-            "choice": policy.name,
-            "metrics": metrics.to_dict(),
-            "effects": policy.effects
-        })
-
-        print(f"\n✅ {policy.name} chosen!")
-
-    final = history[-1]["metrics"]
-    display_final_result(final)
+    print("\n=== Final Results ===")
+    from analysis import final_report
+    final_report(history)
 
 if __name__ == "__main__":
     main()

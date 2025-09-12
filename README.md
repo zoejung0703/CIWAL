@@ -1,37 +1,63 @@
-# Civilization & Values: Policy Simulation Game
+# Societal Policy Simulation
 
-This is a prototype interactive simulation/game designed to demonstrate how **policy choices reflect value orientations** and how those choices shape society over time.
+An interactive text-based simulation/game that explores how different policy choices shape the development of societies over time.  
+The system balances **five key metrics**:  
+- **GDP** (economic productivity)  
+- **Happiness** (well-being of citizens)  
+- **Freedom** (political and personal liberty)  
+- **Equality** (fairness and distribution of resources)  
+- **Sustainability** (environmental and long-term balance)  
 
----
-
-## 🎯 Concept
-- Each turn represents a historical stage (tribal → empire → industrial → modern).  
-- The player, as the decision-maker, selects one policy per turn.  
-- Policies are inspired by famous philosophers and economists (e.g., Plato, Cicero, Keynes, Rawls, Sen).  
-- Each policy affects five key metrics:  
-  - **GDP** (Efficiency)  
-  - **Happiness** (Well-being)  
-  - **Freedom** (Liberty)  
-  - **Inequality** (Equality/Fairness, inverse)  
-  - **Sustainability** (Environmental balance)  
-
-At the end of the simulation, the game provides:  
-- **Final metrics visualization**  
-- **Ending summary** (collapse or survival)  
-- **Orientation analysis**: Did your society prioritize efficiency, freedom, happiness, equality, or sustainability?
+Population grows each turn, but its effect is indirect.  
 
 ---
 
-## 🛠 Tech Stack
-- **Python 3.10+**: Core simulation and text-based prototype  
-- **Unity (planned)**: Interactive exhibition frontend  
-- **Data**: Policies and effects stored in `data/policy_data.json`  
+## 🎮 Gameplay Flow
+1. Each turn represents a historical era (Tribe → Ancient → Empire → Industrial → Modern → Future).  
+2. You will be presented with **policy choices**.  
+   - Each policy has **direct effects** on the metrics (e.g., GDP +6, Freedom -3).  
+   - Philosophers or thinkers provide supporting quotes for context.  
+3. After selecting a policy, the metrics update, and warnings appear if critical values drop too low.  
+4. The simulation continues until:  
+   - You reach the **Future Transition** (turn 12), or  
+   - One metric collapses to 0 (Game Over).  
 
 ---
 
-## 🚀 How to Run
-1. Clone this repository  
-2. Install Python 3.10+  
-3. Run the prototype in console:
+## ⚖️ Endings
+The game can end in different ways:
+- **Collapse by GDP** → Economic bankruptcy  
+- **Collapse by Happiness** → Social unrest and breakdown  
+- **Collapse by Freedom** → Authoritarian regime  
+- **Collapse by Equality** → Severe inequality tears society apart  
+- **Collapse by Sustainability** → Ecological collapse  
+
+Or you reach **successful survival**, where a final report shows your society’s orientation.
+
+---
+
+## 📊 Analysis
+At the end of the game, you will see:
+- **Text-based bar charts** for each metric (0–100 scale, but can exceed 100 or fall below 0 for extremes).  
+- A short description of the level (e.g., *“Strong economy”*, *“Authoritarian tendencies”*).  
+- An **orientation analysis**:  
+  - Efficiency-oriented (GDP)  
+  - Well-being-oriented (Happiness)  
+  - Freedom-oriented (Freedom)  
+  - Equality-oriented (Equality)  
+  - Sustainability-oriented (Sustainability)  
+
+---
+
+## 🛠️ Tech Stack
+- **Python** for simulation logic and text interface  
+- **Unity** (optional) for visualization (via JSON export)  
+- **JSON data** for policies, eras, and philosophers  
+
+---
+
+## 🚀 Run the Game
+1. Clone the repository  
+2. Run the test driver:
    ```bash
    python test.py

@@ -1,35 +1,36 @@
 """
 models.py
-Core classes for the simulation:
-- Metrics: stores GDP, Happiness, Freedom, Inequality, Sustainability, Population
-- Policy: represents a policy choice (effects, philosopher, quote)
-- Turn: represents one historical turn with available policies
+Core classes for simulation:
+- Metrics: GDP, Happiness, Freedom, Equality, Sustainability, Population
+- Policy: policy choice (effects, philosopher, quote)
+- Turn: one era with available policies
 """
 
 class Metrics:
-    def __init__(self, gdp=50, happiness=50, freedom=50, inequality=50, sustainability=50, population=100):
+    def __init__(self, gdp=50, happiness=50, freedom=50, equality=50, sustainability=50, population=100):
         self.gdp = gdp
         self.happiness = happiness
         self.freedom = freedom
-        self.inequality = inequality
+        self.equality = equality
         self.sustainability = sustainability
         self.population = population
 
     def update(self, effects: dict):
-        """Apply policy effects to metrics"""
+        """Apply policy effects to metrics."""
         for key, value in effects.items():
             if hasattr(self, key):
-                setattr(self, key, max(0, getattr(self, key) + value))
+                setattr(self, key, max(0, getattr(self, key) + value))  # prevent negatives
 
     def to_dict(self):
         return {
             "gdp": self.gdp,
             "happiness": self.happiness,
             "freedom": self.freedom,
-            "inequality": self.inequality,
+            "equality": self.equality,
             "sustainability": self.sustainability,
             "population": self.population,
         }
+
 
 class Policy:
     def __init__(self, policy_id, name, effects, philosopher, quote):
@@ -48,12 +49,13 @@ class Policy:
             "quote": self.quote
         }
 
+
 class Turn:
     def __init__(self, turn_id, era, scene, policies):
         self.turn_id = turn_id
         self.era = era
         self.scene = scene
-        self.policies = policies
+        self.policies = policies  # list of Policy
 
     def to_dict(self):
         return {

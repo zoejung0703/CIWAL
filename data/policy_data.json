@@ -8,135 +8,135 @@
           {
             "id": "communal",
             "name": "Communal Sharing",
-            "effects": { "gdp": -3, "happiness": 6, "freedom": -4, "inequality": -8, "sustainability": 3 },
+            "effects": { "gdp": -3, "happiness": 6, "freedom": -4, "equality": 8, "sustainability": 3 },
             "philosopher": "Shaman",
-            "quote": "Sharing binds the tribe together."
+            "quote": "Sharing binds the tribe together"
           },
           {
             "id": "private",
             "name": "Private Protection",
-            "effects": { "gdp": 6, "happiness": -2, "freedom": 4, "inequality": 7, "sustainability": -2 },
+            "effects": { "gdp": 6, "happiness": -2, "freedom": 4, "equality": -7, "sustainability": -2 },
             "philosopher": "Tribal Chief",
-            "quote": "The strong owning more makes the tribe stronger."
+            "quote": "The strong having more makes the tribe stronger"
           }
         ]
       },
       {
         "turn_id": 2,
         "era": "Ancient City-State",
-        "scene": "5 Stone Houses, 1 Agora, 2 Farmlands, 1 Harbor",
+        "scene": "5 Stone Houses, 1 Agora, 2 Farms, 1 Harbor",
         "policies": [
           {
             "id": "communal2",
-            "name": "Collective Redistribution",
-            "effects": { "gdp": -4, "happiness": 5, "freedom": -3, "inequality": -7, "sustainability": 2 },
+            "name": "Communal Distribution",
+            "effects": { "gdp": -4, "happiness": 5, "freedom": -3, "equality": 7, "sustainability": 2 },
             "philosopher": "Plato",
-            "quote": "A just state is harmony of roles."
+            "quote": "A just state is harmony of roles"
           },
           {
             "id": "trade",
-            "name": "Free Trade",
-            "effects": { "gdp": 8, "happiness": -3, "freedom": 6, "inequality": 6, "sustainability": -4 },
+            "name": "Allow Free Trade",
+            "effects": { "gdp": 8, "happiness": -3, "freedom": 6, "equality": -6, "sustainability": -4 },
             "philosopher": "Aristotle",
-            "quote": "Property is the foundation of virtue."
+            "quote": "Property is the basis for virtue"
           }
         ]
       },
       {
         "turn_id": 3,
         "era": "Roman Empire",
-        "scene": "1 Colosseum, 1 Harbor, 1 Legion Camp, 3 Farmlands",
+        "scene": "1 Colosseum, 1 Harbor, 1 Legion Camp, 3 Farms",
         "policies": [
           {
             "id": "law_tax",
             "name": "Lawful Taxation",
-            "effects": { "gdp": 5, "happiness": 3, "freedom": 2, "inequality": -5, "sustainability": 1 },
+            "effects": { "gdp": 5, "happiness": 3, "freedom": 2, "equality": 5, "sustainability": 1 },
             "philosopher": "Cicero",
-            "quote": "Law is the shield of every citizen."
+            "quote": "Law is the shield of every citizen"
           },
           {
             "id": "emperor_power",
-            "name": "Centralized Imperial Power",
-            "effects": { "gdp": 10, "happiness": -4, "freedom": -8, "inequality": 8, "sustainability": -3 },
+            "name": "Emperor’s Power Centralization",
+            "effects": { "gdp": 10, "happiness": -4, "freedom": -8, "equality": -8, "sustainability": -3 },
             "philosopher": "Emperor",
-            "quote": "Power, not law, guards the empire."
+            "quote": "Power, not law, keeps the empire safe"
           }
         ]
       },
       {
         "turn_id": 4,
         "era": "Medieval Christian Society",
-        "scene": "1 Cathedral, 1 Castle, 4 Farmlands, 1 Market",
+        "scene": "1 Cathedral, 1 Castle, 4 Farms, 1 Market",
         "policies": [
           {
             "id": "church_charity",
             "name": "Expand Church Charity",
-            "effects": { "gdp": -2, "happiness": 6, "freedom": -3, "inequality": -7, "sustainability": 2 },
+            "effects": { "gdp": -2, "happiness": 6, "freedom": -3, "equality": 7, "sustainability": 2 },
             "philosopher": "Augustine",
-            "quote": "True wealth is serving God."
+            "quote": "True wealth is serving God"
           },
           {
             "id": "lord_tax",
-            "name": "Strengthen Lord’s Taxation",
-            "effects": { "gdp": 8, "happiness": -3, "freedom": -4, "inequality": 7, "sustainability": -2 },
-            "philosopher": "Feudal Lord",
-            "quote": "Taxes and authority create order."
+            "name": "Increase Lord’s Tax",
+            "effects": { "gdp": 8, "happiness": -3, "freedom": -4, "equality": -7, "sustainability": -2 },
+            "philosopher": "Lord",
+            "quote": "Taxes and authority create order"
           }
         ]
       },
       {
         "turn_id": 5,
         "era": "Commercial City",
-        "scene": "1 Harbor, 2 Markets, 2 Farmlands, 1 Guild",
+        "scene": "1 Harbor, 2 Markets, 2 Farms, 1 Guild",
         "policies": [
           {
             "id": "just_price",
             "name": "Just Price Doctrine",
-            "effects": { "gdp": -3, "happiness": 4, "freedom": -3, "inequality": -6, "sustainability": 2 },
+            "effects": { "gdp": -3, "happiness": 4, "freedom": -3, "equality": 6, "sustainability": 2 },
             "philosopher": "Thomas Aquinas",
-            "quote": "Every transaction has a just price."
+            "quote": "Every trade has a just price"
           },
           {
             "id": "free_trade",
-            "name": "Free Commerce",
-            "effects": { "gdp": 10, "happiness": -2, "freedom": 7, "inequality": 8, "sustainability": -4 },
-            "philosopher": "Merchant Representative",
-            "quote": "Profit comes from freedom."
+            "name": "Free Trade",
+            "effects": { "gdp": 10, "happiness": -2, "freedom": 7, "equality": -8, "sustainability": -4 },
+            "philosopher": "Merchant",
+            "quote": "Profit comes from freedom"
           },
           {
             "id": "lord_tax2",
-            "name": "Maintain Feudal Tax",
-            "effects": { "gdp": 6, "happiness": -1, "freedom": -2, "inequality": 5, "sustainability": -1 },
-            "philosopher": "Feudal Lord",
-            "quote": "My authority must remain."
+            "name": "Maintain Lord’s Tax",
+            "effects": { "gdp": 6, "happiness": -1, "freedom": -2, "equality": -5, "sustainability": -1 },
+            "philosopher": "Lord",
+            "quote": "My authority must stand"
           }
         ]
       },
       {
         "turn_id": 6,
         "era": "Early Modern (Mercantilism)",
-        "scene": "2 Harbors, 1 Bullion Vault, 2 Workshops, 2 Farmlands",
+        "scene": "2 Harbors, 1 Gold/Silver Treasury, 2 Workshops, 2 Farms",
         "policies": [
           {
             "id": "bullionism",
             "name": "Bullion Accumulation",
-            "effects": { "gdp": 12, "happiness": -3, "freedom": -6, "inequality": 7, "sustainability": -5 },
+            "effects": { "gdp": 12, "happiness": -3, "freedom": -6, "equality": -7, "sustainability": -5 },
             "philosopher": "Thomas Mun",
-            "quote": "Gold makes the nation strong."
+            "quote": "Gold makes the nation strong"
           },
           {
             "id": "domestic_protect",
             "name": "Domestic Protection",
-            "effects": { "gdp": -4, "happiness": 3, "freedom": -3, "inequality": -6, "sustainability": 6 },
+            "effects": { "gdp": -4, "happiness": 3, "freedom": -3, "equality": 6, "sustainability": 6 },
             "philosopher": "Guild Artisan",
-            "quote": "We must guard domestic industry."
+            "quote": "Protect the home market"
           },
           {
             "id": "liberal_trade",
-            "name": "Liberal Trade",
-            "effects": { "gdp": 8, "happiness": -2, "freedom": 6, "inequality": 6, "sustainability": -3 },
+            "name": "Trade Liberalization",
+            "effects": { "gdp": 8, "happiness": -2, "freedom": 6, "equality": -6, "sustainability": -3 },
             "philosopher": "Adam Smith",
-            "quote": "The invisible hand creates greater wealth."
+            "quote": "The invisible hand creates more wealth"
           }
         ]
       },
@@ -148,79 +148,79 @@
           {
             "id": "laissez_faire",
             "name": "Expand Free Market",
-            "effects": { "gdp": 15, "happiness": -4, "freedom": 8, "inequality": 10, "sustainability": -6 },
+            "effects": { "gdp": 15, "happiness": -4, "freedom": 8, "equality": -10, "sustainability": -6 },
             "philosopher": "John Stuart Mill",
-            "quote": "Freedom is the condition for happiness."
+            "quote": "Liberty is a condition for happiness"
           },
           {
             "id": "labor_limit",
             "name": "Limit Working Hours",
-            "effects": { "gdp": -5, "happiness": 7, "freedom": -3, "inequality": -8, "sustainability": 4 },
+            "effects": { "gdp": -5, "happiness": 7, "freedom": -3, "equality": 8, "sustainability": 4 },
             "philosopher": "Robert Owen",
-            "quote": "The rights of workers are society’s strength."
+            "quote": "Workers’ rights are society’s strength"
           },
           {
             "id": "edu_invest",
             "name": "Invest in Education",
-            "effects": { "gdp": 4, "happiness": 5, "freedom": 2, "inequality": -5, "sustainability": 2 },
+            "effects": { "gdp": 4, "happiness": 5, "freedom": 2, "equality": 5, "sustainability": 2 },
             "philosopher": "Educator",
-            "quote": "Educating children changes the future."
+            "quote": "When children learn, the future changes"
           }
         ]
       },
       {
         "turn_id": 8,
         "era": "Great Depression",
-        "scene": "1 Bank, 1 Relief Center, Unemployment Line",
+        "scene": "1 Bank, 1 Relief Shelter, Jobless Queue",
         "policies": [
           {
             "id": "gov_intervention",
             "name": "Government Intervention",
-            "effects": { "gdp": 10, "happiness": 7, "freedom": -4, "inequality": -6, "sustainability": 3 },
+            "effects": { "gdp": 10, "happiness": 7, "freedom": -4, "equality": 6, "sustainability": 3 },
             "philosopher": "Keynes",
-            "quote": "Government intervention breathes life into the economy."
+            "quote": "Government action is the economy’s lifeline"
           },
           {
             "id": "market_autonomy",
             "name": "Market Autonomy",
-            "effects": { "gdp": -5, "happiness": -4, "freedom": 8, "inequality": 8, "sustainability": -5 },
+            "effects": { "gdp": -5, "happiness": -4, "freedom": 8, "equality": -8, "sustainability": -5 },
             "philosopher": "Hayek",
-            "quote": "Free competition overcomes chaos."
+            "quote": "Free competition overcomes chaos"
           },
           {
             "id": "socialist_dist",
-            "name": "Socialist Redistribution",
-            "effects": { "gdp": -6, "happiness": 8, "freedom": -5, "inequality": -10, "sustainability": 4 },
+            "name": "Socialist Distribution",
+            "effects": { "gdp": -6, "happiness": 8, "freedom": -5, "equality": 10, "sustainability": 4 },
             "philosopher": "Socialist Activist",
-            "quote": "Everyone has the right to live with dignity."
+            "quote": "Everyone has the right to live decently"
           }
         ]
       },
       {
         "turn_id": 9,
         "era": "Welfare State Formation",
-        "scene": "1 Apartment Block, 1 Welfare Office, 1 School, 1 Hospital",
+        "scene": "1 Apartment Complex, 1 Welfare Office, 1 School, 1 Hospital",
         "policies": [
           {
             "id": "universal_welfare",
             "name": "Universal Welfare",
-            "effects": { "gdp": -6, "happiness": 9, "freedom": -3, "inequality": -12, "sustainability": 4 },
+            "effects": { "gdp": -6, "happiness": 9, "freedom": -3, "equality": 12, "sustainability": 4 },
             "philosopher": "Rawls",
-            "quote": "The least advantaged must come first."
+            "quote": "The least advantaged come first"
           },
           {
             "id": "minimal_state",
             "name": "Minimal State",
-            "effects": { "gdp": 12, "happiness": -4, "freedom": 9, "inequality": 12, "sustainability": -5 },
+            "effects": { "gdp": 12, "happiness": -4, "freedom": 9, "equality": -12, "sustainability": -5 },
             "philosopher": "Friedman",
-            "quote": "Welfare without liberty is coercion."
+            "quote": "Welfare without liberty is coercion"
           },
           {
             "id": "selective_welfare",
             "name": "Selective Welfare",
-            "effects": { "gdp": 3, "happiness": 5, "freedom": -1, "inequality": -5, "sustainability": 2 },
+            "effects": { "gdp": 3, "happiness": 5, "freedom": -1, "equality": 5, "sustainability": 2 },
             "philosopher": "Politician",
-            "quote": "Targeted support is rational."
+            "quote": "Targeted aid is more rational"
           }
         ]
       },
@@ -232,58 +232,58 @@
           {
             "id": "global_free_trade",
             "name": "Global Free Trade",
-            "effects": { "gdp": 15, "happiness": -3, "freedom": 9, "inequality": 10, "sustainability": -6 },
+            "effects": { "gdp": 15, "happiness": -3, "freedom": 9, "equality": -10, "sustainability": -6 },
             "philosopher": "Friedman",
-            "quote": "Free trade guarantees prosperity."
+            "quote": "Free trade ensures prosperity"
           },
           {
             "id": "capability",
-            "name": "Capability Investment",
-            "effects": { "gdp": 6, "happiness": 6, "freedom": 4, "inequality": -6, "sustainability": 6 },
+            "name": "Invest in Capabilities",
+            "effects": { "gdp": 6, "happiness": 6, "freedom": 4, "equality": 6, "sustainability": 6 },
             "philosopher": "Amartya Sen",
-            "quote": "True freedom is the ability to choose one’s life."
+            "quote": "Freedom is the ability to choose your life"
           },
           {
             "id": "protectionism",
             "name": "Protectionism",
-            "effects": { "gdp": -4, "happiness": -2, "freedom": -3, "inequality": -4, "sustainability": 7 },
+            "effects": { "gdp": -4, "happiness": -2, "freedom": -3, "equality": 4, "sustainability": 7 },
             "philosopher": "Protectionist",
-            "quote": "Domestic industry must be protected."
+            "quote": "We must defend domestic industry"
           }
         ]
       },
       {
         "turn_id": 11,
         "era": "Environmental Crisis",
-        "scene": "1 Polluted City, 1 Solar Plant, 1 Protest Square",
+        "scene": "1 Polluted City, 1 Solar Farm, 1 Protest Square",
         "policies": [
           {
             "id": "carbon_zero",
-            "name": "Carbon Neutral",
-            "effects": { "gdp": -6, "happiness": 3, "freedom": -2, "inequality": -3, "sustainability": 15 },
+            "name": "Carbon Zero",
+            "effects": { "gdp": -6, "happiness": 3, "freedom": -2, "equality": 3, "sustainability": 15 },
             "philosopher": "Brundtland",
-            "quote": "We must change now for future generations."
+            "quote": "We must act now for future generations"
           },
           {
             "id": "tech_innov",
             "name": "Technological Innovation",
-            "effects": { "gdp": 12, "happiness": 4, "freedom": 6, "inequality": 5, "sustainability": 10 },
+            "effects": { "gdp": 12, "happiness": 4, "freedom": 6, "equality": 5, "sustainability": 10 },
             "philosopher": "Scientist",
-            "quote": "Innovation solves problems."
+            "quote": "Innovation solves problems"
           },
           {
             "id": "status_quo",
             "name": "Maintain Status Quo",
-            "effects": { "gdp": 6, "happiness": -3, "freedom": 2, "inequality": 4, "sustainability": -8 },
-            "philosopher": "Entrepreneur",
-            "quote": "Stability comes from maintaining the status quo."
+            "effects": { "gdp": 6, "happiness": -3, "freedom": 2, "equality": -4, "sustainability": -8 },
+            "philosopher": "Industrialist",
+            "quote": "Stability comes from continuity"
           }
         ]
       },
       {
         "turn_id": 12,
         "era": "Future Transition",
-        "scene": "Zoom-out island view, multiple Earth islands",
+        "scene": "Zoom-out: many islands forming Earth",
         "policies": []
       }
     ]
