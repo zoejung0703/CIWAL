@@ -1,9 +1,9 @@
 """
 models.py
-Core classes for simulation:
+Core classes for the simulation
 - Metrics: GDP, Happiness, Freedom, Equality, Sustainability, Population
-- Policy: policy choice (effects, philosopher, quote)
-- Turn: one era with available policies
+- Policy: Policy options (effects, philosopher, quote)
+- Turn: A single turn/era with available policies
 """
 
 class Metrics:
@@ -16,10 +16,10 @@ class Metrics:
         self.population = population
 
     def update(self, effects: dict):
-        """Apply policy effects to metrics."""
+        """Apply policy effects"""
         for key, value in effects.items():
             if hasattr(self, key):
-                setattr(self, key, max(0, getattr(self, key) + value))  # prevent negatives
+                setattr(self, key, max(0, getattr(self, key) + value))  # prevent negative values
 
     def to_dict(self):
         return {

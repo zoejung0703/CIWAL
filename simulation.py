@@ -1,6 +1,6 @@
 """
 simulation.py
-Turn progression, policy application, warnings, and endings
+Turn progression, policy effects, warnings, and ending checks
 """
 
 import json
@@ -21,7 +21,7 @@ def load_policy_data(path="data/policy_data.json"):
                 p["philosopher"],
                 p["quote"],
             )
-            for p in t["policies"]
+            for p in t.get("policies", [])
         ]
         turns.append(Turn(t["turn_id"], t["era"], t["scene"], policies))
     return turns
@@ -32,36 +32,38 @@ def check_warnings(metrics):
     if metrics.happiness < 20:
         warnings.append("⚠️ Happiness is critically low. Social unrest is rising.")
     if metrics.gdp < 40:
-        warnings.append("⚠️ Economy is weakening. Production is faltering.")
+        warnings.append("⚠️ The economy is weakening.")
     if metrics.sustainability < 20:
-        warnings.append("⚠️ Environmental collapse is imminent.")
+        warnings.append("⚠️ Environmental destruction is severe.")
     if metrics.freedom < 20:
-        warnings.append("⚠️ Freedom is severely restricted. Authoritarianism grows.")
+        warnings.append("⚠️ Freedom is dangerously restricted.")
     if metrics.equality < 30:
-        warnings.append("⚠️ Equality is dangerously low. Society is fragmenting.")
+        warnings.append("⚠️ Equality is dangerously low — society is fracturing.")
     return warnings
 
 
-def apply_population_growth(metrics):
-    """Population growth depends on GDP, happiness, sustainability."""
-    gdp_factor = (metrics.gdp - 50) / 500  
-    happiness_factor = (metrics.happiness - 50) / 2500  
-    sustainability_factor = (metrics.sustainability - 50) / 1000  
-
-    growth_factor = 1.0 + gdp_factor + happiness_factor + sustainability_factor
-    growth_factor = max(0.7, min(1.3, growth_factor))  
-
-    metrics.population = int(metrics.population * growth_factor)
+def check_ending(metrics):
+    if metrics.happiness <= 0:
+        return "💥 Collapse: Happiness reached zero."
+    if metrics.gdp <= 0:
+        return "📉 Collapse: GDP fell to zero."
+    if metrics.sustainability <= 0:
+        return "🌍 Collapse: Environment destroyed."
+    if metrics.freedom <= 0:
+        return "🔒 Collapse: Freedom eliminated — dictatorship."
+    if metrics.equality <= 0:
+        return "⚖️ Collapse: Equality has completely broken down."
+    return None
 
 
 def run_simulation(turns, choices):
     metrics = Metrics(
-        gdp=30,
-        happiness=50,
-        freedom=45,
-        equality=75,
-        sustainability=70,
-        population=50
+        gdp=30,             # Initial GDP
+        happiness=50,       # Initial happiness
+        freedom=45,         # Initial freedom
+        equality=25,        # Initial equality
+        sustainability=70,  # Initial sustainability
+        population=50       # Initial population
     )
     history = []
 
@@ -72,7 +74,10 @@ def run_simulation(turns, choices):
         if policy:
             metrics.update(policy.effects)
 
-        apply_population_growth(metrics)
+        # Simple population growth model
+        metrics.population = int(metrics.population * 1.2)
+
+        # Warnings
         warnings = check_warnings(metrics)
 
         record = {
@@ -84,24 +89,13 @@ def run_simulation(turns, choices):
             "effects": policy.effects if policy else {}
         }
 
-        # Ending conditions
-        if metrics.happiness <= 0:
-            record["ending"] = "💥 Social collapse (Happiness 0)"
+        # Ending check
+        ending = check_ending(metrics)
+        if ending:
+            record["ending"] = ending
             history.append(record)
             break
-        if metrics.gdp <= 0:
-            record["ending"] = "📉 Economic collapse (GDP 0)"
-            history.append(record)
-            break
-        if metrics.sustainability <= 0:
-            record["ending"] = "🌍 Environmental collapse (Sustainability 0)"
-            history.append(record)
-            break
-        if metrics.freedom <= 0:
-            record["ending"] = "🔒 Authoritarian regime (Freedom 0)"
-            history.append(record)
-            break
-        if metrics.equality <= 0:
-            record["ending"] = "⚖️ Extreme inequality → Social breakdown"
-            history.append(record)
- 
+
+        history.append(record)
+
+    return history
