@@ -1,17 +1,17 @@
 """
 models.py
 시뮬레이션에 필요한 기본 클래스 정의
-- Metrics: GDP, 행복, 자유, 불평등, 지속, 인구
+- Metrics: GDP, 행복, 자유, 평등, 지속, 인구
 - Policy: 정책 선택지 (효과, 철학자, 문구)
 - Turn: 특정 턴(시대), 선택 가능한 정책들
 """
 
 class Metrics:
-    def __init__(self, gdp=50, happiness=50, freedom=50, inequality=50, sustainability=50, population=100):
+    def __init__(self, gdp=50, happiness=50, freedom=50, equality=50, sustainability=50, population=100):
         self.gdp = gdp
         self.happiness = happiness
         self.freedom = freedom
-        self.inequality = inequality
+        self.equality = equality
         self.sustainability = sustainability
         self.population = population
 
@@ -26,7 +26,7 @@ class Metrics:
             "gdp": self.gdp,
             "happiness": self.happiness,
             "freedom": self.freedom,
-            "inequality": self.inequality,
+            "equality": self.equality,
             "sustainability": self.sustainability,
             "population": self.population,
         }

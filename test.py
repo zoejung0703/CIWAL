@@ -1,5 +1,5 @@
 import json
-from simulation import load_policy_data, check_warnings
+from simulation import load_policy_data, check_warnings, check_ending
 from models import Metrics
 from analysis import explain_final_metrics, interpret_metrics, bar_line, LABELS
 
@@ -8,7 +8,7 @@ def display_turn_start(turn, metrics):
     print(f"\n=== 턴 {turn.turn_id} - {turn.era} ===")
     print("현재 지표 상태:")
     interp = interpret_metrics(metrics.to_dict())
-    for key in ["gdp", "happiness", "freedom", "inequality", "sustainability"]:
+    for key in ["gdp", "happiness", "freedom", "equality", "sustainability"]:
         val = getattr(metrics, key)
         label = LABELS[key]
         print(bar_line(label, val, interp[label]))
@@ -42,7 +42,7 @@ def main():
     turns = load_policy_data()
 
     metrics = Metrics(gdp=30, happiness=50, freedom=45,
-                      inequality=25, sustainability=70, population=50)
+                      equality=25, sustainability=70, population=50)
 
     history = []
     for turn in turns:
@@ -63,8 +63,16 @@ def main():
             "effects": policy.effects
         })
 
+        # 즉시 엔딩 체크
+        ending = check_ending(metrics)
+        if ending:
+            print("\n=== 즉시 엔딩 ===")
+            print(ending)
+            return  # 게임 종료
+
         print(f"\n✅ {policy.name} 선택됨!")
 
+    # 마지막 턴까지 엔딩이 없을 경우 최종 결과 출력
     final = history[-1]["metrics"]
     display_final_result(final)
 

@@ -21,7 +21,7 @@ def load_policy_data(path="data/policy_data.json"):
                 p["philosopher"],
                 p["quote"],
             )
-            for p in t["policies"]
+            for p in t.get("policies", [])
         ]
         turns.append(Turn(t["turn_id"], t["era"], t["scene"], policies))
     return turns
@@ -37,19 +37,33 @@ def check_warnings(metrics):
         warnings.append("⚠️ 환경 파괴가 심각합니다.")
     if metrics.freedom < 20:
         warnings.append("⚠️ 자유가 크게 위축되었습니다.")
-    if metrics.inequality > 70:
-        warnings.append("⚠️ 불평등이 심각해 사회가 분열 조짐을 보입니다.")
+    if metrics.equality < 30:
+        warnings.append("⚠️ 평등이 심각히 무너져 사회가 분열 조짐을 보입니다.")
     return warnings
+
+
+def check_ending(metrics):
+    if metrics.happiness <= 0:
+        return "💥 사회 붕괴 (행복 0)"
+    if metrics.gdp <= 0:
+        return "📉 경제 파산 (GDP 0)"
+    if metrics.sustainability <= 0:
+        return "🌍 환경 붕괴 (지속 0)"
+    if metrics.freedom <= 0:
+        return "🔒 독재 사회 (자유 0)"
+    if metrics.equality <= 0:
+        return "⚖️ 사회 분열 (평등 0)"
+    return None
 
 
 def run_simulation(turns, choices):
     metrics = Metrics(
-    gdp=30,             # 초기 GDP 지수
-    happiness=50,       # 초기 행복 지수
-    freedom=45,         # 초기 자유 지수
-    inequality=25,      # 초기 불평등 지수
-    sustainability=70,  # 초기 지속가능성
-    population=50       # 초기 인구
+        gdp=30,             # 초기 GDP 지수
+        happiness=50,       # 초기 행복 지수
+        freedom=45,         # 초기 자유 지수
+        equality=25,        # 초기 평등 지수
+        sustainability=70,  # 초기 지속가능성
+        population=50       # 초기 인구
     )
     history = []
 
@@ -73,28 +87,12 @@ def run_simulation(turns, choices):
             "metrics": metrics.to_dict(),
             "warnings": warnings,
             "effects": policy.effects if policy else {}
-
         }
 
-        # 즉시 엔딩 조건
-        if metrics.happiness <= 0:
-            record["ending"] = "💥 사회 붕괴 (행복 0)"
-            history.append(record)
-            break
-        if metrics.gdp <= 0:
-            record["ending"] = "📉 경제 파산 (GDP 0)"
-            history.append(record)
-            break
-        if metrics.sustainability <= 0:
-            record["ending"] = "🌍 환경 붕괴 (지속 0)"
-            history.append(record)
-            break
-        if metrics.freedom <= 0:
-            record["ending"] = "🔒 독재 사회 (자유 0)"
-            history.append(record)
-            break
-        if metrics.inequality >= 100:
-            record["ending"] = "⚖️ 사회 분열 (불평등 100)"
+        # 즉시 엔딩 조건 (단일 함수로 판정)
+        ending = check_ending(metrics)
+        if ending:
+            record["ending"] = ending
             history.append(record)
             break
 

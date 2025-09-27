@@ -6,7 +6,7 @@ LABELS = {
     "gdp": "GDP",
     "happiness": "행복",
     "freedom": "자유",
-    "inequality": "불평등",
+    "equality": "평등",
     "sustainability": "지속성",
     "population": "인구"
 }
@@ -54,13 +54,13 @@ def interpret_metrics(m):
     else:
         interp["자유"] = "권위주의, 억압 체제"
 
-    # Inequality
-    if m["inequality"] < 30:
-        interp["불평등"] = "평등사회"
-    elif m["inequality"] < 60:
-        interp["불평등"] = "보통 수준"
+    # Equality
+    if m["equality"] > 70:
+        interp["평등"] = "평등사회"
+    elif m["equality"] > 40:
+        interp["평등"] = "보통 수준"
     else:
-        interp["불평등"] = "심각: 사회 분열 위험"
+        interp["평등"] = "심각: 사회 분열 위험"
 
     # Sustainability
     if m["sustainability"] > 70:
@@ -79,7 +79,7 @@ def analyze_orientation(final):
         "효율 지향": final["gdp"],
         "행복 지향": final["happiness"],
         "자유 지향": final["freedom"],
-        "평등 지향": 100 - final["inequality"],
+        "평등 지향": 100 - final["equality"],
         "지속 지향": final["sustainability"]
     }
     dominant = max(scores, key=scores.get)
@@ -89,7 +89,7 @@ def analyze_orientation(final):
 def explain_final_metrics(final):
     interp = interpret_metrics(final)
     print("\n=== 최종 지표 ===")
-    for key in ["gdp", "happiness", "freedom", "inequality", "sustainability"]:
+    for key in ["gdp", "happiness", "freedom", "equality", "sustainability"]:
         val = final[key]
         label = LABELS[key]
         print(bar_line(label, val, interp[label]))
@@ -103,8 +103,8 @@ def explain_final_metrics(final):
         print("🌍 환경이 붕괴하여 사회가 지속 불가능해졌습니다.")
     elif final["freedom"] <= 0:
         print("🔒 자유가 사라져 독재 사회가 되었습니다.")
-    elif final["inequality"] >= 100:
-        print("⚖️ 불평등이 극에 달해 사회가 분열되었습니다.")
+    elif final["equality"] >= 100:
+        print("⚖️ 평등이 극에 달해 사회가 분열되었습니다.")
     else:
         print("🎉 당신의 사회는 성공적으로 생존했습니다!")
 

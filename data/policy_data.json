@@ -1,291 +1,464 @@
 {
-    "turns": [
-      {
-        "turn_id": 1,
-        "era": "부족 공동체",
-        "scene": "움집3, 숲2, 공터1",
-        "policies": [
-          {
-            "id": "communal",
-            "name": "공동 분배",
-            "effects": { "gdp": -3, "happiness": 6, "freedom": -4, "inequality": -8, "sustainability": 3 },
-            "philosopher": "주술사",
-            "quote": "나눔이 부족을 하나로 묶는다"
+  "turns": [
+    {
+      "turn_id": 1,
+      "era": "부족 공동체",
+      "scene": "움집3, 숲2, 공터1",
+      "policies": [
+        {
+          "id": "communal",
+          "name": "공동 분배",
+          "effects": {
+            "gdp": -3,
+            "happiness": 6,
+            "freedom": -4,
+            "sustainability": 3,
+            "equality": 8
           },
-          {
-            "id": "private",
-            "name": "사유 보호",
-            "effects": { "gdp": 6, "happiness": -2, "freedom": 4, "inequality": 7, "sustainability": -2 },
-            "philosopher": "부족장",
-            "quote": "강한 자가 더 가지면 부족이 강해진다"
-          }
-        ]
-      },
-      {
-        "turn_id": 2,
-        "era": "고대 도시국가",
-        "scene": "돌집5, 아고라1, 농지2, 항구1",
-        "policies": [
-          {
-            "id": "communal2",
-            "name": "공동 분배제",
-            "effects": { "gdp": -4, "happiness": 5, "freedom": -3, "inequality": -7, "sustainability": 2 },
-            "philosopher": "플라톤",
-            "quote": "정의로운 국가는 역할의 조화다"
+          "philosopher": "주술사",
+          "quote": "나눔이 부족을 하나로 묶는다"
+        },
+        {
+          "id": "private",
+          "name": "사유 보호",
+          "effects": {
+            "gdp": 6,
+            "happiness": -2,
+            "freedom": 4,
+            "sustainability": -2,
+            "equality": -7
           },
-          {
-            "id": "trade",
-            "name": "자유 무역 허용",
-            "effects": { "gdp": 8, "happiness": -3, "freedom": 6, "inequality": 6, "sustainability": -4 },
-            "philosopher": "아리스토텔레스",
-            "quote": "재산은 덕을 키우는 바탕이다"
-          }
-        ]
-      },
-      {
-        "turn_id": 3,
-        "era": "로마 제국",
-        "scene": "원형경기장1, 항구1, 군단막사1, 농지3",
-        "policies": [
-          {
-            "id": "law_tax",
-            "name": "법치적 조세",
-            "effects": { "gdp": 5, "happiness": 3, "freedom": 2, "inequality": -5, "sustainability": 1 },
-            "philosopher": "키케로",
-            "quote": "법은 모든 시민의 방패다"
+          "philosopher": "부족장",
+          "quote": "강한 자가 더 가지면 부족이 강해진다"
+        }
+      ]
+    },
+    {
+      "turn_id": 2,
+      "era": "고대 도시국가",
+      "scene": "돌집5, 아고라1, 농지2, 항구1",
+      "policies": [
+        {
+          "id": "communal2",
+          "name": "공동 분배제",
+          "effects": {
+            "gdp": -4,
+            "happiness": 5,
+            "freedom": -3,
+            "sustainability": 2,
+            "equality": 7
           },
-          {
-            "id": "emperor_power",
-            "name": "황제 권력 집중",
-            "effects": { "gdp": 10, "happiness": -4, "freedom": -8, "inequality": 8, "sustainability": -3 },
-            "philosopher": "황제",
-            "quote": "법보다 권력이 제국을 지킨다"
-          }
-        ]
-      },
-      {
-        "turn_id": 4,
-        "era": "중세 기독교 사회",
-        "scene": "성당1, 성채1, 농지4, 시장1",
-        "policies": [
-          {
-            "id": "church_charity",
-            "name": "교회 자선 확대",
-            "effects": { "gdp": -2, "happiness": 6, "freedom": -3, "inequality": -7, "sustainability": 2 },
-            "philosopher": "아우구스티누스",
-            "quote": "참된 부는 신을 섬기는 것이다"
+          "philosopher": "플라톤",
+          "quote": "정의로운 국가는 역할의 조화다"
+        },
+        {
+          "id": "trade",
+          "name": "자유 무역 허용",
+          "effects": {
+            "gdp": 8,
+            "happiness": -3,
+            "freedom": 6,
+            "sustainability": -4,
+            "equality": -6
           },
-          {
-            "id": "lord_tax",
-            "name": "영주 조세 강화",
-            "effects": { "gdp": 8, "happiness": -3, "freedom": -4, "inequality": 7, "sustainability": -2 },
-            "philosopher": "영주",
-            "quote": "세금과 권위가 질서를 만든다"
-          }
-        ]
-      },
-      {
-        "turn_id": 5,
-        "era": "상업 도시",
-        "scene": "항구1, 시장2, 농지2, 길드1",
-        "policies": [
-          {
-            "id": "just_price",
-            "name": "정당가격제",
-            "effects": { "gdp": -3, "happiness": 4, "freedom": -3, "inequality": -6, "sustainability": 2 },
-            "philosopher": "토마스 아퀴나스",
-            "quote": "거래에는 정당한 값이 있다"
+          "philosopher": "아리스토텔레스",
+          "quote": "재산은 덕을 키우는 바탕이다"
+        }
+      ]
+    },
+    {
+      "turn_id": 3,
+      "era": "로마 제국",
+      "scene": "원형경기장1, 항구1, 군단막사1, 농지3",
+      "policies": [
+        {
+          "id": "law_tax",
+          "name": "법치적 조세",
+          "effects": {
+            "gdp": 5,
+            "happiness": 3,
+            "freedom": 2,
+            "sustainability": 1,
+            "equality": 5
           },
-          {
-            "id": "free_trade",
-            "name": "자유 교역",
-            "effects": { "gdp": 10, "happiness": -2, "freedom": 7, "inequality": 8, "sustainability": -4 },
-            "philosopher": "상인 대표",
-            "quote": "이익은 자유에서 온다"
+          "philosopher": "키케로",
+          "quote": "법은 모든 시민의 방패다"
+        },
+        {
+          "id": "emperor_power",
+          "name": "황제 권력 집중",
+          "effects": {
+            "gdp": 10,
+            "happiness": -4,
+            "freedom": -8,
+            "sustainability": -3,
+            "equality": -8
           },
-          {
-            "id": "lord_tax2",
-            "name": "영주세율 유지",
-            "effects": { "gdp": 6, "happiness": -1, "freedom": -2, "inequality": 5, "sustainability": -1 },
-            "philosopher": "영주",
-            "quote": "내 권위가 유지된다"
-          }
-        ]
-      },
-      {
-        "turn_id": 6,
-        "era": "근대 초기 (중상주의)",
-        "scene": "항구2, 금은창고1, 작업장2, 농지2",
-        "policies": [
-          {
-            "id": "bullionism",
-            "name": "금은 축적",
-            "effects": { "gdp": 12, "happiness": -3, "freedom": -6, "inequality": 7, "sustainability": -5 },
-            "philosopher": "토머스 먼",
-            "quote": "황금이 모여야 국가가 강하다"
+          "philosopher": "황제",
+          "quote": "법보다 권력이 제국을 지킨다"
+        }
+      ]
+    },
+    {
+      "turn_id": 4,
+      "era": "중세 기독교 사회",
+      "scene": "성당1, 성채1, 농지4, 시장1",
+      "policies": [
+        {
+          "id": "church_charity",
+          "name": "교회 자선 확대",
+          "effects": {
+            "gdp": -2,
+            "happiness": 6,
+            "freedom": -3,
+            "sustainability": 2,
+            "equality": 7
           },
-          {
-            "id": "domestic_protect",
-            "name": "내수 보호",
-            "effects": { "gdp": -4, "happiness": 3, "freedom": -3, "inequality": -6, "sustainability": 6 },
-            "philosopher": "길드 장인",
-            "quote": "국내를 지켜야 한다"
+          "philosopher": "아우구스티누스",
+          "quote": "참된 부는 신을 섬기는 것이다"
+        },
+        {
+          "id": "lord_tax",
+          "name": "영주 조세 강화",
+          "effects": {
+            "gdp": 8,
+            "happiness": -3,
+            "freedom": -4,
+            "sustainability": -2,
+            "equality": -7
           },
-          {
-            "id": "liberal_trade",
-            "name": "무역 자유화",
-            "effects": { "gdp": 8, "happiness": -2, "freedom": 6, "inequality": 6, "sustainability": -3 },
-            "philosopher": "애덤 스미스",
-            "quote": "보이지 않는 손이 더 큰 부를 만든다"
-          }
-        ]
-      },
-      {
-        "turn_id": 7,
-        "era": "산업혁명",
-        "scene": "공장2, 철도1, 노동자주거지2",
-        "policies": [
-          {
-            "id": "laissez_faire",
-            "name": "자유시장 확대",
-            "effects": { "gdp": 15, "happiness": -4, "freedom": 8, "inequality": 10, "sustainability": -6 },
-            "philosopher": "존 스튜어트 밀",
-            "quote": "자유는 행복의 조건이다"
+          "philosopher": "영주",
+          "quote": "세금과 권위가 질서를 만든다"
+        }
+      ]
+    },
+    {
+      "turn_id": 5,
+      "era": "상업 도시",
+      "scene": "항구1, 시장2, 농지2, 길드1",
+      "policies": [
+        {
+          "id": "just_price",
+          "name": "정당가격제",
+          "effects": {
+            "gdp": -3,
+            "happiness": 4,
+            "freedom": -3,
+            "sustainability": 2,
+            "equality": 6
           },
-          {
-            "id": "labor_limit",
-            "name": "노동시간 제한",
-            "effects": { "gdp": -5, "happiness": 7, "freedom": -3, "inequality": -8, "sustainability": 4 },
-            "philosopher": "로버트 오언",
-            "quote": "노동자의 권리가 사회의 힘이다"
+          "philosopher": "토마스 아퀴나스",
+          "quote": "거래에는 정당한 값이 있다"
+        },
+        {
+          "id": "free_trade",
+          "name": "자유 교역",
+          "effects": {
+            "gdp": 10,
+            "happiness": -2,
+            "freedom": 7,
+            "sustainability": -4,
+            "equality": -8
           },
-          {
-            "id": "edu_invest",
-            "name": "교육 투자",
-            "effects": { "gdp": 4, "happiness": 5, "freedom": 2, "inequality": -5, "sustainability": 2 },
-            "philosopher": "교육가",
-            "quote": "아이들이 배우면 미래가 달라진다"
-          }
-        ]
-      },
-      {
-        "turn_id": 8,
-        "era": "대공황",
-        "scene": "은행1, 구호소1, 실업자행렬",
-        "policies": [
-          {
-            "id": "gov_intervention",
-            "name": "정부 개입",
-            "effects": { "gdp": 10, "happiness": 7, "freedom": -4, "inequality": -6, "sustainability": 3 },
-            "philosopher": "케인스",
-            "quote": "정부 개입이 경기의 숨통이다"
+          "philosopher": "상인 대표",
+          "quote": "이익은 자유에서 온다"
+        },
+        {
+          "id": "lord_tax2",
+          "name": "영주세율 유지",
+          "effects": {
+            "gdp": 6,
+            "happiness": -1,
+            "freedom": -2,
+            "sustainability": -1,
+            "equality": -5
           },
-          {
-            "id": "market_autonomy",
-            "name": "시장 자율",
-            "effects": { "gdp": -5, "happiness": -4, "freedom": 8, "inequality": 8, "sustainability": -5 },
-            "philosopher": "하이에크",
-            "quote": "자유 경쟁이 혼란을 넘긴다"
+          "philosopher": "영주",
+          "quote": "내 권위가 유지된다"
+        }
+      ]
+    },
+    {
+      "turn_id": 6,
+      "era": "근대 초기 (중상주의)",
+      "scene": "항구2, 금은창고1, 작업장2, 농지2",
+      "policies": [
+        {
+          "id": "bullionism",
+          "name": "금은 축적",
+          "effects": {
+            "gdp": 12,
+            "happiness": -3,
+            "freedom": -6,
+            "sustainability": -5,
+            "equality": -7
           },
-          {
-            "id": "socialist_dist",
-            "name": "사회주의 분배",
-            "effects": { "gdp": -6, "happiness": 8, "freedom": -5, "inequality": -10, "sustainability": 4 },
-            "philosopher": "사회주의 활동가",
-            "quote": "인간답게 살 권리가 있다"
-          }
-        ]
-      },
-      {
-        "turn_id": 9,
-        "era": "복지국가 형성",
-        "scene": "아파트단지1, 복지청1, 학교1, 병원1",
-        "policies": [
-          {
-            "id": "universal_welfare",
-            "name": "보편 복지",
-            "effects": { "gdp": -6, "happiness": 9, "freedom": -3, "inequality": -12, "sustainability": 4 },
-            "philosopher": "롤스",
-            "quote": "최소 수혜자가 우선이다"
+          "philosopher": "토머스 먼",
+          "quote": "황금이 모여야 국가가 강하다"
+        },
+        {
+          "id": "domestic_protect",
+          "name": "내수 보호",
+          "effects": {
+            "gdp": -4,
+            "happiness": 3,
+            "freedom": -3,
+            "sustainability": 6,
+            "equality": 6
           },
-          {
-            "id": "minimal_state",
-            "name": "최소국가",
-            "effects": { "gdp": 12, "happiness": -4, "freedom": 9, "inequality": 12, "sustainability": -5 },
-            "philosopher": "프리드먼",
-            "quote": "자유 없는 복지는 강제다"
+          "philosopher": "길드 장인",
+          "quote": "국내를 지켜야 한다"
+        },
+        {
+          "id": "liberal_trade",
+          "name": "무역 자유화",
+          "effects": {
+            "gdp": 8,
+            "happiness": -2,
+            "freedom": 6,
+            "sustainability": -3,
+            "equality": -6
           },
-          {
-            "id": "selective_welfare",
-            "name": "선택적 복지",
-            "effects": { "gdp": 3, "happiness": 5, "freedom": -1, "inequality": -5, "sustainability": 2 },
-            "philosopher": "정치가",
-            "quote": "선별적 지원이 합리적이다"
-          }
-        ]
-      },
-      {
-        "turn_id": 10,
-        "era": "세계화",
-        "scene": "항구2, 다국적본사1",
-        "policies": [
-          {
-            "id": "global_free_trade",
-            "name": "자유무역",
-            "effects": { "gdp": 15, "happiness": -3, "freedom": 9, "inequality": 10, "sustainability": -6 },
-            "philosopher": "프리드먼",
-            "quote": "자유무역이 번영을 보장한다"
+          "philosopher": "애덤 스미스",
+          "quote": "보이지 않는 손이 더 큰 부를 만든다"
+        }
+      ]
+    },
+    {
+      "turn_id": 7,
+      "era": "산업혁명",
+      "scene": "공장2, 철도1, 노동자주거지2",
+      "policies": [
+        {
+          "id": "laissez_faire",
+          "name": "자유시장 확대",
+          "effects": {
+            "gdp": 15,
+            "happiness": -4,
+            "freedom": 8,
+            "sustainability": -6,
+            "equality": -10
           },
-          {
-            "id": "capability",
-            "name": "역량 투자",
-            "effects": { "gdp": 6, "happiness": 6, "freedom": 4, "inequality": -6, "sustainability": 6 },
-            "philosopher": "아마르티아 센",
-            "quote": "삶을 선택할 수 있어야 진짜 자유다"
+          "philosopher": "존 스튜어트 밀",
+          "quote": "자유는 행복의 조건이다"
+        },
+        {
+          "id": "labor_limit",
+          "name": "노동시간 제한",
+          "effects": {
+            "gdp": -5,
+            "happiness": 7,
+            "freedom": -3,
+            "sustainability": 4,
+            "equality": 8
           },
-          {
-            "id": "protectionism",
-            "name": "보호무역",
-            "effects": { "gdp": -4, "happiness": -2, "freedom": -3, "inequality": -4, "sustainability": 7 },
-            "philosopher": "보호무역론자",
-            "quote": "국내 산업을 지켜야 한다"
-          }
-        ]
-      },
-      {
-        "turn_id": 11,
-        "era": "환경 위기",
-        "scene": "오염도시1, 태양광1, 시위대광장1",
-        "policies": [
-          {
-            "id": "carbon_zero",
-            "name": "탄소제로",
-            "effects": { "gdp": -6, "happiness": 3, "freedom": -2, "inequality": -3, "sustainability": 15 },
-            "philosopher": "브룬틀란",
-            "quote": "미래 세대를 위해 지금 바꿔야 한다"
+          "philosopher": "로버트 오언",
+          "quote": "노동자의 권리가 사회의 힘이다"
+        },
+        {
+          "id": "edu_invest",
+          "name": "교육 투자",
+          "effects": {
+            "gdp": 4,
+            "happiness": 5,
+            "freedom": 2,
+            "sustainability": 2,
+            "equality": 5
           },
-          {
-            "id": "tech_innov",
-            "name": "기술혁신",
-            "effects": { "gdp": 12, "happiness": 4, "freedom": 6, "inequality": 5, "sustainability": 10 },
-            "philosopher": "과학자",
-            "quote": "혁신이 문제를 해결한다"
+          "philosopher": "교육가",
+          "quote": "아이들이 배우면 미래가 달라진다"
+        }
+      ]
+    },
+    {
+      "turn_id": 8,
+      "era": "대공황",
+      "scene": "은행1, 구호소1, 실업자행렬",
+      "policies": [
+        {
+          "id": "gov_intervention",
+          "name": "정부 개입",
+          "effects": {
+            "gdp": 10,
+            "happiness": 7,
+            "freedom": -4,
+            "sustainability": 3,
+            "equality": 6
           },
-          {
-            "id": "status_quo",
-            "name": "현상 유지",
-            "effects": { "gdp": 6, "happiness": -3, "freedom": 2, "inequality": 4, "sustainability": -8 },
-            "philosopher": "기업가",
-            "quote": "현상 유지가 안정이다"
-          }
-        ]
-      },
-      {
-        "turn_id": 12,
-        "era": "미래 전환",
-        "scene": "섬 줌아웃, 지구섬 다수",
-        "policies": []
-      }
-    ]
-  }
-  
+          "philosopher": "케인스",
+          "quote": "정부 개입이 경기의 숨통이다"
+        },
+        {
+          "id": "market_autonomy",
+          "name": "시장 자율",
+          "effects": {
+            "gdp": -5,
+            "happiness": -4,
+            "freedom": 8,
+            "sustainability": -5,
+            "equality": -8
+          },
+          "philosopher": "하이에크",
+          "quote": "자유 경쟁이 혼란을 넘긴다"
+        },
+        {
+          "id": "socialist_dist",
+          "name": "사회주의 분배",
+          "effects": {
+            "gdp": -6,
+            "happiness": 8,
+            "freedom": -5,
+            "sustainability": 4,
+            "equality": 10
+          },
+          "philosopher": "사회주의 활동가",
+          "quote": "인간답게 살 권리가 있다"
+        }
+      ]
+    },
+    {
+      "turn_id": 9,
+      "era": "복지국가 형성",
+      "scene": "아파트단지1, 복지청1, 학교1, 병원1",
+      "policies": [
+        {
+          "id": "universal_welfare",
+          "name": "보편 복지",
+          "effects": {
+            "gdp": -6,
+            "happiness": 9,
+            "freedom": -3,
+            "sustainability": 4,
+            "equality": 12
+          },
+          "philosopher": "롤스",
+          "quote": "최소 수혜자가 우선이다"
+        },
+        {
+          "id": "minimal_state",
+          "name": "최소국가",
+          "effects": {
+            "gdp": 12,
+            "happiness": -4,
+            "freedom": 9,
+            "sustainability": -5,
+            "equality": -12
+          },
+          "philosopher": "프리드먼",
+          "quote": "자유 없는 복지는 강제다"
+        },
+        {
+          "id": "selective_welfare",
+          "name": "선택적 복지",
+          "effects": {
+            "gdp": 3,
+            "happiness": 5,
+            "freedom": -1,
+            "sustainability": 2,
+            "equality": 5
+          },
+          "philosopher": "정치가",
+          "quote": "선별적 지원이 합리적이다"
+        }
+      ]
+    },
+    {
+      "turn_id": 10,
+      "era": "세계화",
+      "scene": "항구2, 다국적본사1",
+      "policies": [
+        {
+          "id": "global_free_trade",
+          "name": "자유무역",
+          "effects": {
+            "gdp": 15,
+            "happiness": -3,
+            "freedom": 9,
+            "sustainability": -6,
+            "equality": -10
+          },
+          "philosopher": "프리드먼",
+          "quote": "자유무역이 번영을 보장한다"
+        },
+        {
+          "id": "capability",
+          "name": "역량 투자",
+          "effects": {
+            "gdp": 6,
+            "happiness": 6,
+            "freedom": 4,
+            "sustainability": 6,
+            "equality": 6
+          },
+          "philosopher": "아마르티아 센",
+          "quote": "삶을 선택할 수 있어야 진짜 자유다"
+        },
+        {
+          "id": "protectionism",
+          "name": "보호무역",
+          "effects": {
+            "gdp": -4,
+            "happiness": -2,
+            "freedom": -3,
+            "sustainability": 7,
+            "equality": 4
+          },
+          "philosopher": "보호무역론자",
+          "quote": "국내 산업을 지켜야 한다"
+        }
+      ]
+    },
+    {
+      "turn_id": 11,
+      "era": "환경 위기",
+      "scene": "오염도시1, 태양광1, 시위대광장1",
+      "policies": [
+        {
+          "id": "carbon_zero",
+          "name": "탄소제로",
+          "effects": {
+            "gdp": -6,
+            "happiness": 3,
+            "freedom": -2,
+            "sustainability": 15,
+            "equality": 3
+          },
+          "philosopher": "브룬틀란",
+          "quote": "미래 세대를 위해 지금 바꿔야 한다"
+        },
+        {
+          "id": "tech_innov",
+          "name": "기술혁신",
+          "effects": {
+            "gdp": 12,
+            "happiness": 4,
+            "freedom": 6,
+            "sustainability": 10,
+            "equality": -5
+          },
+          "philosopher": "과학자",
+          "quote": "혁신이 문제를 해결한다"
+        },
+        {
+          "id": "status_quo",
+          "name": "현상 유지",
+          "effects": {
+            "gdp": 6,
+            "happiness": -3,
+            "freedom": 2,
+            "sustainability": -8,
+            "equality": -4
+          },
+          "philosopher": "기업가",
+          "quote": "현상 유지가 안정이다"
+        }
+      ]
+    },
+    {
+      "turn_id": 12,
+      "era": "미래 전환",
+      "scene": "섬 줌아웃, 지구섬 다수",
+      "policies": []
+    }
+  ]
+}
