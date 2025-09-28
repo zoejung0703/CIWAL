@@ -1,6 +1,5 @@
 import json
-from simulation import load_policy_data, check_warnings, check_ending
-from models import Metrics
+from simulation import load_policy_data, check_warnings, check_ending, init_metrics
 from analysis import explain_final_metrics, interpret_metrics, bar_line, LABELS
 
 # ===== UI / Display Functions =====
@@ -9,12 +8,9 @@ def display_turn_start(turn, metrics):
     print("Current Metrics:")
     interp = interpret_metrics(metrics.to_dict())
     for key in ["gdp", "happiness", "freedom", "equality", "sustainability"]:
-        val = getattr(metrics, key)
-        label = LABELS[key]
-        print(bar_line(label, val, interp[label]))
+        print(bar_line(LABELS[key], getattr(metrics, key), interp[key]))
 
-    warnings = check_warnings(metrics)
-    for w in warnings:
+    for w in check_warnings(metrics):
         print(w)
 
 def display_policies(turn):
@@ -34,15 +30,13 @@ def get_player_choice(turn):
         except ValueError:
             print("Please enter a valid number.")
 
-def display_final_result(final_metrics):
-    explain_final_metrics(final_metrics)
+def display_final_result(final_metrics, orientation):
+    explain_final_metrics(final_metrics, orientation)
 
 # ===== Main Game Loop =====
 def main():
     turns = load_policy_data()
-
-    metrics = Metrics(gdp=30, happiness=50, freedom=45,
-                      equality=25, sustainability=70, population=50)
+    metrics = init_metrics()
 
     history = []
     for turn in turns:
@@ -63,18 +57,24 @@ def main():
             "effects": policy.effects
         })
 
-        # Immediate ending check
         ending = check_ending(metrics)
         if ending:
             print("\n=== Immediate Ending ===")
             print(ending)
+
+            # Orientation at collapse
+            from analysis import analyze_orientation
+            dominant, scores = analyze_orientation(metrics.to_dict())
+            display_final_result(metrics.to_dict(), {"dominant": dominant, "scores": scores})
             return  # Game over
 
         print(f"\n✅ You chose: {policy.name}")
 
-    # If no ending triggered, show final result
     final = history[-1]["metrics"]
-    display_final_result(final)
+
+    from analysis import analyze_orientation
+    dominant, scores = analyze_orientation(final)
+    display_final_result(final, {"dominant": dominant, "scores": scores})
 
 if __name__ == "__main__":
     main()

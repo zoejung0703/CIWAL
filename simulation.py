@@ -5,6 +5,7 @@ Turn progression, policy effects, warnings, and ending checks
 
 import json
 from models import Metrics, Policy, Turn
+from analysis import analyze_orientation
 
 
 def load_policy_data(path="data/policy_data.json"):
@@ -25,6 +26,18 @@ def load_policy_data(path="data/policy_data.json"):
         ]
         turns.append(Turn(t["turn_id"], t["era"], t["scene"], policies))
     return turns
+
+
+def init_metrics():
+    """Return starting metrics"""
+    return Metrics(
+        gdp=30,
+        happiness=50,
+        freedom=45,
+        equality=25,
+        sustainability=70,
+        population=50
+    )
 
 
 def check_warnings(metrics):
@@ -56,15 +69,10 @@ def check_ending(metrics):
     return None
 
 
+from analysis import analyze_orientation
+
 def run_simulation(turns, choices):
-    metrics = Metrics(
-        gdp=30,             # Initial GDP
-        happiness=50,       # Initial happiness
-        freedom=45,         # Initial freedom
-        equality=25,        # Initial equality
-        sustainability=70,  # Initial sustainability
-        population=50       # Initial population
-    )
+    metrics = init_metrics()
     history = []
 
     for turn in turns:
@@ -77,8 +85,9 @@ def run_simulation(turns, choices):
         # Simple population growth model
         metrics.population = int(metrics.population * 1.2)
 
-        # Warnings
+        # Warnings + ending check
         warnings = check_warnings(metrics)
+        ending = check_ending(metrics)
 
         record = {
             "turn": turn.turn_id,
@@ -86,16 +95,30 @@ def run_simulation(turns, choices):
             "choice": policy.name if policy else None,
             "metrics": metrics.to_dict(),
             "warnings": warnings,
-            "effects": policy.effects if policy else {}
+            "effects": policy.effects if policy else {},
+            "ending": ending,
+            "orientation": None  # placeholder, will fill later
         }
-
-        # Ending check
-        ending = check_ending(metrics)
-        if ending:
-            record["ending"] = ending
-            history.append(record)
-            break
-
         history.append(record)
 
+        if ending:
+            # Even on collapse, add orientation analysis before returning
+            final_metrics = metrics.to_dict()
+            dominant, scores = analyze_orientation(final_metrics)
+            history[-1]["orientation"] = {
+                "dominant": dominant,
+                "scores": scores
+            }
+            return history
+
+    # If survived all turns: add orientation analysis to the last record
+    final_metrics = metrics.to_dict()
+    dominant, scores = analyze_orientation(final_metrics)
+    history[-1]["orientation"] = {
+        "dominant": dominant,
+        "scores": scores
+    }
+
     return history
+
+

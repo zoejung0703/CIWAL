@@ -19,58 +19,44 @@ ORIENTATION_MAP = {
     "Sustainability-Oriented": "Environmentalism"
 }
 
+
 def bar_line(name, value, desc, width=30):
     filled = int((max(0, min(value, 100)) / 100) * width)
     bar = "█" * filled + " " * (width - filled)
     return f"{name:<12} {value:>3}: 0 [{bar}] 100  ({desc})"
 
+
 def interpret_metrics(m):
-    interp = {}
-    # GDP
-    if m["gdp"] > 100:
-        interp["GDP"] = "Top of the OECD, explosive growth"
-    elif m["gdp"] > 70:
-        interp["GDP"] = "Advanced economy level"
-    elif m["gdp"] > 40:
-        interp["GDP"] = "Developing economy"
-    else:
-        interp["GDP"] = "Underdeveloped, crisis level"
-
-    # Happiness
-    if m["happiness"] > 70:
-        interp["Happiness"] = "World-leading, like Northern Europe"
-    elif m["happiness"] > 50:
-        interp["Happiness"] = "Around the global average"
-    elif m["happiness"] > 30:
-        interp["Happiness"] = "Warning: rising social discontent"
-    else:
-        interp["Happiness"] = "Collapse imminent, risk of rebellion"
-
-    # Freedom
-    if m["freedom"] > 70:
-        interp["Freedom"] = "Fully free society"
-    elif m["freedom"] > 40:
-        interp["Freedom"] = "Partially free"
-    else:
-        interp["Freedom"] = "Authoritarian and repressive regime"
-
-    # Equality
-    if m["equality"] > 70:
-        interp["Equality"] = "Highly equal society"
-    elif m["equality"] > 40:
-        interp["Equality"] = "Moderate equality"
-    else:
-        interp["Equality"] = "Severe inequality, risk of division"
-
-    # Sustainability
-    if m["sustainability"] > 70:
-        interp["Sustainability"] = "Plenty of environmental capacity"
-    elif m["sustainability"] > 40:
-        interp["Sustainability"] = "Warning signs emerging"
-    else:
-        interp["Sustainability"] = "On the brink of collapse"
-
-    return interp
+    """Return interpretation text for each metric"""
+    return {
+        "gdp": (
+            "Top of the OECD, explosive growth" if m["gdp"] > 100 else
+            "Advanced economy level" if m["gdp"] > 70 else
+            "Developing economy" if m["gdp"] > 40 else
+            "Underdeveloped, crisis level"
+        ),
+        "happiness": (
+            "World-leading, like Northern Europe" if m["happiness"] > 70 else
+            "Around the global average" if m["happiness"] > 50 else
+            "Warning: rising social discontent" if m["happiness"] > 30 else
+            "Collapse imminent, risk of rebellion"
+        ),
+        "freedom": (
+            "Fully free society" if m["freedom"] > 70 else
+            "Partially free" if m["freedom"] > 40 else
+            "Authoritarian and repressive regime"
+        ),
+        "equality": (
+            "Highly equal society" if m["equality"] > 70 else
+            "Moderate equality" if m["equality"] > 40 else
+            "Severe inequality, risk of division"
+        ),
+        "sustainability": (
+            "Plenty of environmental capacity" if m["sustainability"] > 70 else
+            "Warning signs emerging" if m["sustainability"] > 40 else
+            "On the brink of collapse"
+        ),
+    }
 
 
 def analyze_orientation(final):
@@ -86,13 +72,12 @@ def analyze_orientation(final):
     return dominant, scores
 
 
-def explain_final_metrics(final):
+def explain_final_metrics(final, orientation=None):
     interp = interpret_metrics(final)
     print("\n=== Final Metrics ===")
     for key in ["gdp", "happiness", "freedom", "equality", "sustainability"]:
         val = final[key]
-        label = LABELS[key]
-        print(bar_line(label, val, interp[label]))
+        print(bar_line(LABELS[key], val, interp[key]))
 
     print("\n=== Ending ===")
     if final["happiness"] <= 0:
@@ -109,9 +94,12 @@ def explain_final_metrics(final):
         print("🎉 Your society has survived successfully!")
 
     # Orientation analysis
-    dominant, scores = analyze_orientation(final)
+    if orientation is None:
+        dominant, scores = analyze_orientation(final)
+        orientation = {"dominant": dominant, "scores": scores}
+
     print(f"\n=== Orientation Analysis ===")
-    for k, v in scores.items():
-        mark = "👑" if k == dominant else " "
+    for k, v in orientation["scores"].items():
+        mark = "👑" if k == orientation["dominant"] else " "
         print(f"{mark} {k} ({ORIENTATION_MAP[k]}): {v}")
-    print(f"\nYour society most strongly pursued: '{dominant} ({ORIENTATION_MAP[dominant]})'.")
+    print(f"\nYour society most strongly pursued: '{orientation['dominant']} ({ORIENTATION_MAP[orientation['dominant']]})'.")
